@@ -2,7 +2,8 @@ FROM debian:latest
 
 RUN apt update && apt upgrade -y
 RUN apt install git curl python3-pip ffmpeg -y
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+RUN apt-get update && apt-get install -y curl gnupg2 && \
+    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install -y nodejs && \
     npm i -g npm
 COPY requirements.txt /requirements.txt
